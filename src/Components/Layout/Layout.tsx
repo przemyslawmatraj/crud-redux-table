@@ -1,6 +1,5 @@
-import { Layout, Menu, theme } from "antd";
-import { Outlet, Link, useLocation } from "react-router-dom";
-import LanguageDropdown from "./LanguageDropdown/LanguageDropdown";
+import { Layout } from "antd";
+import { Outlet } from "react-router-dom";
 import Navbar from "./Navbar/Navbar";
 import styles from "./Layout.module.scss";
 

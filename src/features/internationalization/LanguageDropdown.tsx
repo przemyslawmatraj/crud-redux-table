@@ -1,12 +1,12 @@
 import { Button, Dropdown, Space } from "antd";
 import type { MenuProps } from "antd";
 import { DownOutlined } from "@ant-design/icons";
-import { Languages } from "../../../features/internationalization/internationalizationSlice";
-import { useAppDispatch, useAppSelector } from "../../../app/hooks";
+import { Languages } from "./internationalizationSlice";
+import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import {
   selectCurrentLanguage,
   setLanguage,
-} from "../../../features/internationalization/internationalizationSlice";
+} from "./internationalizationSlice";
 
 const items: MenuProps["items"] = Object.values(Languages).map((language) => {
   return {
@@ -26,7 +26,7 @@ const LanguageDropdown = () => {
           items,
           onClick: ({ key }) => dispatch(setLanguage(key)),
         }}
-        trigger={["click", "hover"]}
+        trigger={["click"]}
         placement="bottomRight"
       >
         <Space>

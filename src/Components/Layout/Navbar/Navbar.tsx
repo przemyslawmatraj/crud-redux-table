@@ -1,7 +1,7 @@
 import { Menu } from "antd";
 import { Header } from "antd/es/layout/layout";
-import { Link, useRoutes } from "react-router-dom";
-import LanguageDropdown from "../LanguageDropdown/LanguageDropdown";
+import { Link } from "react-router-dom";
+import LanguageDropdown from "../../../features/internationalization/LanguageDropdown";
 import styles from "./Navbar.module.scss";
 
 const navigationLinks = [
