@@ -1,7 +1,7 @@
 import { Key, useRef, useState } from "react";
 import {
   type UserType,
-  allUsers,
+  selectAllUsers,
   editUser,
   deleteUser,
   deleteSelectedUsers,
@@ -34,7 +34,7 @@ const columns: ColumnsType<UserType> = [
     title: "Bio",
     dataIndex: "bio",
     key: "bio",
-    width: 400,
+    width: 150,
   },
   {
     title: "Action",
@@ -63,7 +63,7 @@ const Main = () => {
 
   const dispatch = useAppDispatch();
 
-  const data = useAppSelector(allUsers);
+  const data = useAppSelector(selectAllUsers);
 
   const handleDelete = () => {
     dispatch(deleteSelectedUsers(selectedRowKeys.current));
@@ -85,10 +85,11 @@ const Main = () => {
         columns={columns}
         dataSource={data}
         rowSelection={{
-          onChange(selectedRowKeyss, selectedRows, info) {
+          onChange(selectedRowKeyss) {
             selectedRowKeys.current = selectedRowKeyss;
           },
         }}
+        rowKey="key"
         className={styles.table}
         pagination={{
           ...tableParams.pagination,

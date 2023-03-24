@@ -16,7 +16,7 @@ const initialState: UserTableState = [];
 
 for (let i = 0; i < 100; i++) {
   initialState.push({
-    key: i.toString(),
+    key: "user" + i.toString(),
     name: `John Doe ${i + 2}`,
     age: 32,
     dateOfBirth: `01/${(i % 12) + 1}/1989`,
@@ -49,6 +49,6 @@ export const userTableSlice = createSlice({
 export const { addUser, deleteUser, deleteSelectedUsers, editUser } =
   userTableSlice.actions;
 
-export const allUsers = (state: RootState) => state.userTable;
+export const selectAllUsers = (state: RootState) => state.userTable;
 
 export default userTableSlice.reducer;
