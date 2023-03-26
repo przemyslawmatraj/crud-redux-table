@@ -36,6 +36,13 @@ const columns: ColumnsType<UserType> = [
     dataIndex: "bio",
     key: "bio",
     width: 150,
+    render: (text) => {
+      return (
+        <Space>
+          <p className={styles.bio}>{text}</p>
+        </Space>
+      );
+    },
   },
   {
     title: <FormattedMessage id="table.actions" />,

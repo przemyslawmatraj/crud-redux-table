@@ -7,7 +7,11 @@ const { Title } = Typography;
 const Views = () => {
   return (
     <Space direction="vertical">
-      <Title>
+      <Title
+        style={{
+          textAlign: "center",
+        }}
+      >
         <FormattedMessage id="route.views" />
       </Title>
       <UserTable />

@@ -1,15 +1,12 @@
 .link {
   color: #daedff;
   text-decoration: none;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
+  margin-right: 1.2rem;
 }
 
 .link:focus-visible {
   outline: 5px auto -webkit-focus-ring-color;
-}
-
-.menu {
-  column-gap: 20px;
 }
 
 .header {

@@ -7,7 +7,11 @@ const { Title } = Typography;
 const Main = () => {
   return (
     <Space direction="vertical">
-      <Title>
+      <Title
+        style={{
+          textAlign: "center",
+        }}
+      >
         <FormattedMessage id="route.main" />
       </Title>
       <UserTable />
