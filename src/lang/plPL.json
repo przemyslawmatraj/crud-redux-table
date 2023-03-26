@@ -1,0 +1,15 @@
+{
+  "route.main": "Strona główna",
+  "route.views": "Podglądy",
+  "button.edit": "Edytuj",
+  "button.save": "Zapisz",
+  "button.cancel": "Anuluj",
+  "button.delete": "Usuń",
+  "button.add": "Dodaj",
+  "button.addNewUser": "Dodaj nowego użytkownika",
+  "table.name": "Nazwa",
+  "table.age": "Wiek",
+  "table.dateOfBirth": "Data urodzenia",
+  "table.bio": "Biografia",
+  "table.actions": "Akcje"
+}

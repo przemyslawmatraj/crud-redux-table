@@ -3,15 +3,16 @@ import { Header } from "antd/es/layout/layout";
 import { Link } from "react-router-dom";
 import LanguageDropdown from "../../../features/internationalization/LanguageDropdown";
 import styles from "./Navbar.module.scss";
+import { FormattedMessage } from "react-intl";
 
 const navigationLinks = [
   {
     path: "/main",
-    label: "Main",
+    label: <FormattedMessage id="route.main" />,
   },
   {
     path: "/views",
-    label: "Views",
+    label: <FormattedMessage id="route.views" />,
   },
 ];
 

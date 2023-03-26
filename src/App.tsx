@@ -14,8 +14,9 @@ import plPL from "antd/es/locale/pl_PL";
 import enUS from "antd/es/locale/en_US";
 import { useAppSelector } from "./app/hooks";
 import { selectCurrentLanguage } from "./features/internationalization/internationalizationSlice";
+import { IntlProvider } from "react-intl";
 
-const locales = {
+const antdLocales = {
   plPL,
   enUS,
 };
@@ -35,9 +36,15 @@ function App() {
   const language = useAppSelector(selectCurrentLanguage);
 
   return (
-    <AntdProvider locale={locales[language.locale]}>
-      <RouterProvider router={router} />
-    </AntdProvider>
+    <IntlProvider
+      locale={language.locale.slice(0, 2)}
+      messages={language.messages}
+      defaultLocale="en"
+    >
+      <AntdProvider locale={antdLocales[language.locale]}>
+        <RouterProvider router={router} />
+      </AntdProvider>
+    </IntlProvider>
   );
 }
 

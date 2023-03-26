@@ -9,35 +9,36 @@ import {
 import { type ColumnsType } from "antd/es/table";
 import { Table, Space, Button } from "antd";
 import { useAppSelector, useAppDispatch } from "../../app/hooks";
+import { FormattedMessage } from "react-intl";
 import styles from "./UserTable.module.scss";
 
 const columns: ColumnsType<UserType> = [
   {
-    title: "Name",
+    title: <FormattedMessage id="table.name" />,
     dataIndex: "name",
     key: "name",
     width: 150,
   },
   {
-    title: "Age",
+    title: <FormattedMessage id="table.age" />,
     dataIndex: "age",
     key: "age",
     width: 100,
   },
   {
-    title: "Date of Birth",
+    title: <FormattedMessage id="table.dateOfBirth" />,
     dataIndex: "dateOfBirth",
     key: "dateOfBirth",
     width: 150,
   },
   {
-    title: "Bio",
+    title: <FormattedMessage id="table.bio" />,
     dataIndex: "bio",
     key: "bio",
     width: 150,
   },
   {
-    title: "Action",
+    title: <FormattedMessage id="table.actions" />,
     key: "action",
     render: (record) => {
       return (
@@ -100,7 +101,7 @@ const Main = () => {
         scroll={{ y: 500, x: 0 }}
       />
       <Button type="primary" onClick={handleDelete}>
-        Delete
+        <FormattedMessage id="button.delete" />
       </Button>
     </div>
   );
@@ -123,7 +124,7 @@ const EditOutlined = ({ record }: { record: UserType }) => {
   return (
     <Space size="middle">
       <Button type="primary" onClick={handleEdit}>
-        Edit
+        <FormattedMessage id="button.edit" />
       </Button>
     </Space>
   );
@@ -139,7 +140,7 @@ const DeleteOutlined = ({ record }: { record: UserType }) => {
           dispatch(deleteUser(record.key));
         }}
       >
-        Delete
+        <FormattedMessage id="button.delete" />
       </Button>
     </Space>
   );

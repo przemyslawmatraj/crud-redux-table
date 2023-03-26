@@ -1,0 +1,15 @@
+{
+  "route.main": "Main",
+  "route.views": "Views",
+  "button.edit": "Edit",
+  "button.save": "Save",
+  "button.cancel": "Cancel",
+  "button.delete": "Delete",
+  "button.add": "Add",
+  "button.addNewUser": "Add new user",
+  "table.name": "Name",
+  "table.age": "Age",
+  "table.dateOfBirth": "Date of birth",
+  "table.bio": "Bio",
+  "table.actions": "Actions"
+}
