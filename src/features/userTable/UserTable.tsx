@@ -52,7 +52,7 @@ const columns: ColumnsType<UserType> = [
   },
 ];
 
-const Main = () => {
+const UserTable = () => {
   const [tableParams, setTableParams] = useState({
     pagination: {
       current: 1,
@@ -146,4 +146,4 @@ const DeleteOutlined = ({ record }: { record: UserType }) => {
   );
 };
 
-export default Main;
+export default UserTable;

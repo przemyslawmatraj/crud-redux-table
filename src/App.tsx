@@ -5,10 +5,10 @@ import {
   Route,
   Navigate,
 } from "react-router-dom";
-import UserTable from "./features/userTable/UserTable";
 import MainLayout from "./Components/Layout/Layout";
 import NotFound from "./pages/NotFound";
-
+import Main from "./pages/Main";
+import Views from "./pages/Views";
 import { ConfigProvider as AntdProvider } from "antd";
 import plPL from "antd/es/locale/pl_PL";
 import enUS from "antd/es/locale/en_US";
@@ -25,8 +25,8 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<MainLayout />}>
       <Route path="/" element={<Navigate to="main" />} />
-      <Route path="main" element={<UserTable />} />
-      <Route path="views" element={<UserTable />} />
+      <Route path="main" element={<Main />} />
+      <Route path="views" element={<Views />} />
       <Route path="*" element={<NotFound />} />
     </Route>
   )
