@@ -1,4 +1,4 @@
-import { Key, useRef, useState } from "react";
+import { Key, memo, useEffect, useRef, useState } from "react";
 import {
   type UserType,
   selectAllUsers,
@@ -11,6 +11,8 @@ import { Table, Space, Button } from "antd";
 import { useAppSelector, useAppDispatch } from "../../app/hooks";
 import { FormattedMessage } from "react-intl";
 import styles from "./UserTable.module.scss";
+import UserModal from "../../Components/UserModal/UserModal";
+import { selectCurrentLanguage } from "../internationalization/internationalizationSlice";
 
 const columns: ColumnsType<UserType> = [
   {
@@ -30,6 +32,13 @@ const columns: ColumnsType<UserType> = [
     dataIndex: "dateOfBirth",
     key: "dateOfBirth",
     width: 150,
+    render: (date) => {
+      return (
+        <Space>
+          <DateOfBirth date={date} />
+        </Space>
+      );
+    },
   },
   {
     title: <FormattedMessage id="table.bio" />,
@@ -110,34 +119,20 @@ const UserTable = () => {
       <Button type="primary" onClick={handleDelete}>
         <FormattedMessage id="button.delete" />
       </Button>
+      <UserModal />
     </div>
   );
 };
 
-const EditOutlined = ({ record }: { record: UserType }) => {
-  const dispatch = useAppDispatch();
-
-  const handleEdit = () => {
-    const newRecord = {
-      ...record,
-      name: "new name",
-      age: 100,
-      dateOfBirth: "01/01/2000",
-      bio: "new bio",
-    };
-    dispatch(editUser(newRecord));
-  };
-
+const EditOutlined = memo(({ record }: { record: UserType }) => {
   return (
     <Space size="middle">
-      <Button type="primary" onClick={handleEdit}>
-        <FormattedMessage id="button.edit" />
-      </Button>
+      <UserModal defaultValues={record} userKey={record.key} />
     </Space>
   );
-};
+});
 
-const DeleteOutlined = ({ record }: { record: UserType }) => {
+const DeleteOutlined = memo(({ record }: { record: UserType }) => {
   const dispatch = useAppDispatch();
   return (
     <Space size="middle">
@@ -150,6 +145,21 @@ const DeleteOutlined = ({ record }: { record: UserType }) => {
         <FormattedMessage id="button.delete" />
       </Button>
     </Space>
+  );
+});
+
+const DateOfBirth = ({ date }: { date: Date }) => {
+  const language = useAppSelector(selectCurrentLanguage);
+  const formattedLocale =
+    language.locale.slice(0, 2) + "-" + language.locale.slice(2);
+  return (
+    <p className={styles.dateOfBirth}>
+      {new Intl.DateTimeFormat(formattedLocale, {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      }).format(date)}
+    </p>
   );
 };
 

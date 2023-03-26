@@ -6,10 +6,14 @@
   "button.cancel": "Cancel",
   "button.delete": "Delete",
   "button.add": "Add",
-  "button.addNewUser": "Add new user",
+  "modal.title.addUser": "Add new user",
+  "modal.title.editUser": "Edit user {name}",
   "table.name": "Name",
   "table.age": "Age",
   "table.dateOfBirth": "Date of birth",
   "table.bio": "Bio",
-  "table.actions": "Actions"
+  "table.actions": "Actions",
+  "form.required.errorMessage": "Required",
+  "form.number.errorMessage": "Must be a number",
+  "form.date.errorMessage": "Must be a date"
 }

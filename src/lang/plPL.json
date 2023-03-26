@@ -5,11 +5,15 @@
   "button.save": "Zapisz",
   "button.cancel": "Anuluj",
   "button.delete": "Usuń",
-  "button.add": "Dodaj",
-  "button.addNewUser": "Dodaj nowego użytkownika",
+  "button.add": "Dodaj uzytkownika",
+  "modal.title.addUser": "Dodaj nowego użytkownika",
+  "modal.title.editUser": "Edytuj użytkownika {name}",
   "table.name": "Nazwa",
   "table.age": "Wiek",
   "table.dateOfBirth": "Data urodzenia",
   "table.bio": "Biografia",
-  "table.actions": "Akcje"
+  "table.actions": "Akcje",
+  "form.required.errorMessage": "To pole jest wymagane",
+  "form.number.errorMessage": "To pole musi zawierać liczbę",
+  "form.date.errorMessage": "To pole musi zawierać datę"
 }

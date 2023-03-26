@@ -6,7 +6,7 @@ export type UserType = {
   key: React.Key;
   name: string;
   age: number;
-  dateOfBirth: string;
+  dateOfBirth: Date;
   bio: string;
 };
 
@@ -14,12 +14,12 @@ export type UserTableState = UserType[];
 
 const initialState: UserTableState = [];
 
-for (let i = 0; i < 100; i++) {
+for (let i = 0; i < 20; i++) {
   initialState.push({
     key: "user" + i.toString(),
     name: `John Doe ${i + 2}`,
     age: 32,
-    dateOfBirth: `01/${(i % 12) + 1}/1989`,
+    dateOfBirth: new Date("1990-12-01"),
     bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
   });
 }
