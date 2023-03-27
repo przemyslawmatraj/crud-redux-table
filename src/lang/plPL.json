@@ -15,5 +15,6 @@
   "table.actions": "Akcje",
   "form.required.errorMessage": "To pole jest wymagane",
   "form.number.errorMessage": "To pole musi zawierać liczbę",
-  "form.date.errorMessage": "To pole musi zawierać datę"
+  "form.date.errorMessage": "To pole musi zawierać datę",
+  "form.maxSize.errorMessage": "Maksymalna długość to {max} znaków"
 }

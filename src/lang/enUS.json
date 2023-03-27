@@ -15,5 +15,6 @@
   "table.actions": "Actions",
   "form.required.errorMessage": "Required",
   "form.number.errorMessage": "Must be a number",
-  "form.date.errorMessage": "Must be a date"
+  "form.date.errorMessage": "Must be a date",
+  "form.maxSize.errorMessage": "Max size is {max} characters"
 }

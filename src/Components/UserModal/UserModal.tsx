@@ -1,6 +1,6 @@
 import Modal from "antd/es/modal/Modal";
 import { Key, useState, useEffect } from "react";
-import { Form, Input, Button, DatePicker } from "antd";
+import { Form, Button, Input, DatePicker } from "antd";
 import { FormattedMessage } from "react-intl";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { addUser, editUser } from "../../features/userTable/userTableSlice";
@@ -14,6 +14,7 @@ import dayjs from "dayjs";
 import { v4 as uuidv4 } from "uuid";
 
 const { Text } = Typography;
+const { TextArea } = Input;
 
 const schema = yup.object().shape({
   name: yup.string().required("form.required.errorMessage"),
@@ -25,7 +26,7 @@ const schema = yup.object().shape({
     .date()
     .required("form.required.errorMessage")
     .typeError("form.date.errorMessage"),
-  bio: yup.string().optional(),
+  bio: yup.string().max(250, "form.maxSize.errorMessage").optional(),
 });
 
 type FormValues = yup.InferType<typeof schema>;
@@ -46,7 +47,7 @@ const UserModal = ({
     formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
-    mode: "onBlur",
+    mode: "all",
     defaultValues: defaultValues || undefined,
   });
 
@@ -172,7 +173,7 @@ const UserModal = ({
               name="bio"
               control={control}
               render={({ field }) => (
-                <Input
+                <TextArea
                   {...field}
                   placeholder="Bio"
                   onChange={(e) => field.onChange(e.target.value)}
@@ -180,6 +181,16 @@ const UserModal = ({
                 />
               )}
             />
+            {errors.bio && (
+              <Text type="danger">
+                <FormattedMessage
+                  id={errors.bio.message?.toString()}
+                  values={{
+                    max: 250,
+                  }}
+                />
+              </Text>
+            )}
           </Form.Item>
 
           <Button type="primary" htmlType="submit">
