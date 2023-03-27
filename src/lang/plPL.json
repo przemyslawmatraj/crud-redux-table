@@ -1,6 +1,8 @@
 {
   "route.main": "Strona główna",
   "route.views": "Podglądy",
+  "route.notFound": "Ta strona nie istnieje",
+  "route.notFound.message": "Przepraszamy, ale strona, której szukasz nie istnieje. Sprawdź, czy adres URL jest poprawny lub wróć do strony głównej.",
   "button.edit": "Edytuj",
   "button.save": "Zapisz",
   "button.cancel": "Anuluj",
