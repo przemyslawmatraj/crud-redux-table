@@ -34,9 +34,11 @@ type FormValues = yup.InferType<typeof schema>;
 const UserModal = ({
   defaultValues,
   userKey,
+  buttonIcon,
 }: {
   defaultValues?: UserType;
   userKey?: Key;
+  buttonIcon?: JSX.Element;
 }) => {
   const [visible, setVisible] = useState(false);
   const dispatch = useAppDispatch();
@@ -88,7 +90,12 @@ const UserModal = ({
 
   return (
     <>
-      <Button type="primary" onClick={showModal}>
+      <Button
+        type="primary"
+        {...(defaultValues && { type: "default", size: "small" })}
+        onClick={showModal}
+        icon={buttonIcon}
+      >
         <FormattedMessage id={defaultValues ? "button.edit" : "button.add"} />
       </Button>
       <Modal

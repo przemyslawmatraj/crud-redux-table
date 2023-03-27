@@ -5,6 +5,7 @@
   "button.save": "Zapisz",
   "button.cancel": "Anuluj",
   "button.delete": "Usuń",
+  "button.delete.selected": "Usuń zaznaczone",
   "button.add": "Dodaj użytkownika",
   "modal.title.addUser": "Dodaj nowego użytkownika",
   "modal.title.editUser": "Edytuj użytkownika {name}",

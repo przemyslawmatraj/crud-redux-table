@@ -7,6 +7,7 @@ import {
 } from "./userTableSlice";
 import { type ColumnsType } from "antd/es/table";
 import { Table, Space, Button } from "antd";
+import { EditOutlined, DeleteOutlined, PlusOutlined } from "@ant-design/icons";
 import { useAppSelector, useAppDispatch } from "../../app/hooks";
 import { FormattedMessage } from "react-intl";
 import styles from "./UserTable.module.scss";
@@ -50,8 +51,8 @@ const columns: ColumnsType<UserType> = [
     render: (record) => {
       return (
         <Space size="middle">
-          <EditOutlined record={record} />
-          <DeleteOutlined record={record} />
+          <EditButton record={record} />
+          <DeleteButton record={record} />
         </Space>
       );
     },
@@ -67,14 +68,14 @@ const UserTable = () => {
       pageSizeOptions: [10, 20, 50],
     },
   });
-  const selectedRowKeys = useRef<Key[]>([]);
+  const [selectedRowKeys, setSelectedRowKeys] = useState<Key[]>([]);
 
   const dispatch = useAppDispatch();
 
   const data = useAppSelector(selectAllUsers);
 
   const handleDelete = () => {
-    dispatch(deleteSelectedUsers(selectedRowKeys.current));
+    dispatch(deleteSelectedUsers(selectedRowKeys));
   };
 
   const handleChangePagiantion = (page: number, pageSize: number) => {
@@ -93,8 +94,8 @@ const UserTable = () => {
         columns={columns}
         dataSource={data}
         rowSelection={{
-          onChange(selectedRowKeyss) {
-            selectedRowKeys.current = selectedRowKeyss;
+          onChange(keys) {
+            setSelectedRowKeys(keys);
           },
         }}
         rowKey="key"
@@ -108,31 +109,46 @@ const UserTable = () => {
         }}
         scroll={{ y: 500, x: 0 }}
       />
-      <Button type="primary" onClick={handleDelete}>
-        <FormattedMessage id="button.delete" />
-      </Button>
-      <UserModal />
+      <Space>
+        <UserModal buttonIcon={<PlusOutlined />} />
+        <Button
+          type="primary"
+          danger
+          onClick={handleDelete}
+          icon={<DeleteOutlined />}
+          disabled={selectedRowKeys.length === 0}
+        >
+          <FormattedMessage id="button.delete.selected" />
+        </Button>
+      </Space>
     </div>
   );
 };
 
-const EditOutlined = memo(({ record }: { record: UserType }) => {
+const EditButton = memo(({ record }: { record: UserType }) => {
   return (
     <Space size="middle">
-      <UserModal defaultValues={record} userKey={record.key} />
+      <UserModal
+        defaultValues={record}
+        userKey={record.key}
+        buttonIcon={<EditOutlined />}
+      />
     </Space>
   );
 });
 
-const DeleteOutlined = memo(({ record }: { record: UserType }) => {
+const DeleteButton = memo(({ record }: { record: UserType }) => {
   const dispatch = useAppDispatch();
   return (
     <Space size="middle">
       <Button
-        type="primary"
+        type="default"
+        size="small"
+        danger
         onClick={() => {
           dispatch(deleteUser(record.key));
         }}
+        icon={<DeleteOutlined />}
       >
         <FormattedMessage id="button.delete" />
       </Button>
