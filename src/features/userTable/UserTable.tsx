@@ -1,8 +1,7 @@
-import { Key, memo, useEffect, useRef, useState } from "react";
+import { Key, memo, useRef, useState } from "react";
 import {
   type UserType,
   selectAllUsers,
-  editUser,
   deleteUser,
   deleteSelectedUsers,
 } from "./userTableSlice";
@@ -113,6 +112,7 @@ const UserTable = () => {
           total: data.length,
           position: ["topRight", "topLeft"],
           onChange: handleChangePagiantion,
+          totalBoundaryShowSizeChanger: 1,
         }}
         scroll={{ y: 500, x: 0 }}
       />
