@@ -7,7 +7,7 @@ export type UserType = {
   name: string;
   age: number;
   dateOfBirth: Date;
-  bio: string;
+  bio?: string;
 };
 
 export type UserTableState = UserType[];

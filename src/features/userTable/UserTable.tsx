@@ -32,11 +32,7 @@ const columns: ColumnsType<UserType> = [
     key: "dateOfBirth",
     width: 150,
     render: (date) => {
-      return (
-        <Space>
-          <DateOfBirth date={date} />
-        </Space>
-      );
+      return <DateOfBirth date={date} />;
     },
   },
   {
@@ -45,11 +41,7 @@ const columns: ColumnsType<UserType> = [
     key: "bio",
     width: 150,
     render: (text) => {
-      return (
-        <Space>
-          <p className={styles.bio}>{text}</p>
-        </Space>
-      );
+      return <p className={styles.bio}>{text}</p>;
     },
   },
   {
@@ -152,14 +144,15 @@ const DateOfBirth = ({ date }: { date: Date }) => {
   const language = useAppSelector(selectCurrentLanguage);
   const formattedLocale =
     language.locale.slice(0, 2) + "-" + language.locale.slice(2);
+
   return (
-    <p className={styles.dateOfBirth}>
+    <>
       {new Intl.DateTimeFormat(formattedLocale, {
         year: "numeric",
         month: "long",
         day: "numeric",
       }).format(date)}
-    </p>
+    </>
   );
 };
 

@@ -11,6 +11,7 @@ import * as yup from "yup";
 import { Typography } from "antd";
 import type { UserType } from "../../features/userTable/userTableSlice";
 import dayjs from "dayjs";
+import { v4 as uuidv4 } from "uuid";
 
 const { Text } = Typography;
 
@@ -26,6 +27,8 @@ const schema = yup.object().shape({
     .typeError("form.date.errorMessage"),
   bio: yup.string().optional(),
 });
+
+type FormValues = yup.InferType<typeof schema>;
 
 const UserModal = ({
   defaultValues,
@@ -58,16 +61,19 @@ const UserModal = ({
     setVisible(false);
   };
 
-  const handleEdit = (data: any) => {
-    const newUser = { ...data, key: userKey };
-    dispatch(editUser(newUser));
+  const handleEdit = (data: FormValues) => {
+    if (userKey) {
+      const newUser = { ...data, key: userKey };
+      dispatch(editUser(newUser));
+    }
   };
 
-  const handleAdd = (data: any) => {
-    dispatch(addUser(data));
+  const handleAdd = (data: FormValues) => {
+    const newUser = { ...data, key: uuidv4() };
+    dispatch(addUser(newUser));
   };
 
-  const onSubmit = (data: any) => {
+  const onSubmit = (data: FormValues) => {
     defaultValues ? handleEdit(data) : handleAdd(data);
     reset();
     setVisible(false);
