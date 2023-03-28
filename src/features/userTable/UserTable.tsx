@@ -146,7 +146,10 @@ const EditButton = memo(({ record }: { record: UserType }) => {
   return (
     <Space size="middle">
       <UserModal
-        defaultValues={record}
+        defaultValues={{
+          ...record,
+          dateOfBirth: new Date(JSON.parse(record.dateOfBirth)),
+        }}
         userKey={record.key}
         buttonIcon={<EditOutlined />}
       />

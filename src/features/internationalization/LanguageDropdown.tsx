@@ -16,7 +16,7 @@ const items: MenuProps["items"] = Object.values(Languages).map((language) => {
 });
 
 const LanguageDropdown = () => {
-  const currentLanguage = useAppSelector(selectCurrentLanguage);
+  const { name } = useAppSelector(selectCurrentLanguage);
   const dispatch = useAppDispatch();
 
   return (
@@ -31,7 +31,7 @@ const LanguageDropdown = () => {
       >
         <Space>
           <Button>
-            {currentLanguage.name}
+            {name}
             <DownOutlined />
           </Button>
         </Space>

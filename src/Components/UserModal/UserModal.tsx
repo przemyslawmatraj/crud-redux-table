@@ -36,7 +36,7 @@ const UserModal = ({
   userKey,
   buttonIcon,
 }: {
-  defaultValues?: UserType;
+  defaultValues?: FormValues;
   userKey?: Key;
   buttonIcon?: JSX.Element;
 }) => {
@@ -87,7 +87,7 @@ const UserModal = ({
     dispatch(addUser(data));
   };
 
-  const onSubmit = (data: UserType) => {
+  const onSubmit = (data: FormValues) => {
     const newUser = {
       ...data,
       key: userKey || uuidv4(),
@@ -176,16 +176,10 @@ const UserModal = ({
               name="dateOfBirth"
               control={control}
               render={({ field: { onChange, value } }) => {
-                const formatDate = (date: Date | string) => {
-                  if (typeof date === "string") {
-                    return dayjs(JSON.parse(value));
-                  }
-                  return dayjs(date);
-                };
                 return (
                   <DatePicker
                     onChange={onChange}
-                    value={value ? formatDate(value) : undefined}
+                    value={value ? dayjs(value) : undefined}
                     placeholder="Date of Birth"
                     format={locale === "enUS" ? "MM/DD/YYYY" : "DD/MM/YYYY"}
                   />
