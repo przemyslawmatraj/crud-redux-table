@@ -1,12 +1,16 @@
+import { useState } from "react";
 import { Typography, Space } from "antd";
-import GenericComponent from "../Components/GenericComponent/GenericComponent";
+import GenericComponent from "../common/GenericComponent/GenericComponent";
 import { FormattedMessage } from "react-intl";
+import { useAppSelector } from "../app/hooks";
+import { selectAllUsers, UserType } from "../features/userTable/userTableSlice";
 
 const { Title } = Typography;
 
 const Views = () => {
+  const users = useAppSelector(selectAllUsers);
   return (
-    <Space direction="vertical">
+    <>
       <Title
         style={{
           textAlign: "center",
@@ -14,8 +18,8 @@ const Views = () => {
       >
         <FormattedMessage id="route.views" />
       </Title>
-      <GenericComponent />
-    </Space>
+      <GenericComponent<UserType> data={users} />
+    </>
   );
 };
 

@@ -1,4 +1,4 @@
-import { Layout } from "antd";
+import { Layout, Space } from "antd";
 import { Outlet } from "react-router-dom";
 import Navbar from "./Navbar/Navbar";
 import styles from "./Layout.module.scss";
@@ -10,7 +10,13 @@ const MainLayout = () => {
     <Layout className={styles.layout}>
       <Navbar />
       <Content className={styles.content}>
-        <Outlet />
+        <Space
+          style={{
+            width: "100%",
+          }}
+        >
+          <Outlet />
+        </Space>
       </Content>
     </Layout>
   );

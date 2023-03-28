@@ -17,6 +17,7 @@
   "table.bio": "Bio",
   "table.actions": "Actions",
   "table.readMore": "Read more",
+  "table.key": "User ID",
   "form.required.errorMessage": "Required",
   "form.number.errorMessage": "Must be a number",
   "form.date.errorMessage": "Must be a date",

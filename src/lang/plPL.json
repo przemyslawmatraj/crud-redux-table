@@ -17,6 +17,7 @@
   "table.bio": "Biografia",
   "table.actions": "Akcje",
   "table.readMore": "Rozwiń",
+  "table.key": "ID użytkownika",
   "form.required.errorMessage": "To pole jest wymagane",
   "form.number.errorMessage": "To pole musi zawierać liczbę",
   "form.date.errorMessage": "To pole musi zawierać datę",
