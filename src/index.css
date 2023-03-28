@@ -14,3 +14,12 @@
   margin: 0;
   padding: 0;
 }
+
+.ant-layout-header {
+  padding-inline: 0;
+  padding-left: 2rem;
+}
+
+.ant-menu {
+  line-height: normal;
+}
