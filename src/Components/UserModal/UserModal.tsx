@@ -65,10 +65,9 @@ const UserModal = ({
     setVisible(false);
   };
 
-  const handleEdit = (data: FormValues) => {
+  const handleEdit = (data: UserType) => {
     if (userKey) {
-      const newUser = { ...data, key: userKey };
-      dispatch(editUser(newUser));
+      dispatch(editUser(data));
       messageApi.success(
         <FormattedMessage
           id="message.editUser.success"
@@ -78,19 +77,23 @@ const UserModal = ({
     }
   };
 
-  const handleAdd = (data: FormValues) => {
-    const newUser = { ...data, key: uuidv4() };
-    dispatch(addUser(newUser));
+  const handleAdd = (data: UserType) => {
     messageApi.success(
       <FormattedMessage
         id="message.addUser.success"
         values={{ name: data.name }}
       />
     );
+    dispatch(addUser(data));
   };
 
-  const onSubmit = (data: FormValues) => {
-    defaultValues ? handleEdit(data) : handleAdd(data);
+  const onSubmit = (data: UserType) => {
+    const newUser = {
+      ...data,
+      key: userKey || uuidv4(),
+      dateOfBirth: JSON.stringify(data.dateOfBirth),
+    };
+    defaultValues ? handleEdit(newUser) : handleAdd(newUser);
     reset();
     setVisible(false);
   };
@@ -173,10 +176,16 @@ const UserModal = ({
               name="dateOfBirth"
               control={control}
               render={({ field: { onChange, value } }) => {
+                const formatDate = (date: Date | string) => {
+                  if (typeof date === "string") {
+                    return dayjs(JSON.parse(value));
+                  }
+                  return dayjs(date);
+                };
                 return (
                   <DatePicker
                     onChange={onChange}
-                    value={value ? dayjs(value) : undefined}
+                    value={value ? formatDate(value) : undefined}
                     placeholder="Date of Birth"
                     format={locale === "enUS" ? "MM/DD/YYYY" : "DD/MM/YYYY"}
                   />
