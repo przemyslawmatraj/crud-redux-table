@@ -6,10 +6,10 @@ import { store } from "./app/store";
 import { Provider as ReactReduxProvider } from "react-redux";
 
 ReactDOM.render(
-  <React.StrictMode>
-    <ReactReduxProvider store={store}>
-      <App />
-    </ReactReduxProvider>
-  </React.StrictMode>,
+  // <React.StrictMode>
+  <ReactReduxProvider store={store}>
+    <App />
+  </ReactReduxProvider>,
+  // </React.StrictMode>,
   document.getElementById("root")
 );

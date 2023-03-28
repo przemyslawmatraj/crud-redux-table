@@ -1,5 +1,5 @@
 import { useAppSelector } from "../../app/hooks";
-import { selectCurrentLanguage } from "../internationalization/internationalizationSlice";
+import { selectCurrentLanguage } from "./internationalizationSlice";
 
 const DateOfBirth = ({ date }: { date: string }) => {
   const language = useAppSelector(selectCurrentLanguage);

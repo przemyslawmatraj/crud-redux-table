@@ -76,7 +76,7 @@ const Navigation = ({
     >
       {navigationLinks.map((item) => (
         // using <MenuItem/> instead of <Menu.Item/> to avoid reloading the menu-header on changing the route
-        <MenuItem {...item} onClick={onClick} />
+        <MenuItem {...item} onClick={onClick} key={item.path} />
       ))}
     </Menu>
     <LanguageDropdown />
