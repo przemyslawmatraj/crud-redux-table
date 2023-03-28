@@ -10,13 +10,7 @@ const MainLayout = () => {
     <Layout className={styles.layout}>
       <Navbar />
       <Content className={styles.content}>
-        <Space
-          style={{
-            width: "100%",
-          }}
-        >
-          <Outlet />
-        </Space>
+        <Outlet />
       </Content>
     </Layout>
   );
