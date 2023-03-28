@@ -8,7 +8,7 @@
   "button.cancel": "Cancel",
   "button.delete": "Delete",
   "button.delete.selected": "Delete selected",
-  "button.add": "Add",
+  "button.add": "Add user",
   "modal.title.addUser": "Add new user",
   "modal.title.editUser": "Edit user {name}",
   "table.name": "Name",
@@ -16,8 +16,14 @@
   "table.dateOfBirth": "Date of birth",
   "table.bio": "Bio",
   "table.actions": "Actions",
+  "table.readMore": "Read more",
   "form.required.errorMessage": "Required",
   "form.number.errorMessage": "Must be a number",
   "form.date.errorMessage": "Must be a date",
-  "form.maxSize.errorMessage": "Max size is {max} characters"
+  "form.maxSize.errorMessage": "Max size is {max} characters",
+  "message.addUser.success": "User {name} has been added",
+  "message.editUser.success": "User {name} has been edited",
+  "message.deleteUser.success": "User {name} has been deleted",
+  "message.deleteSelectedUsers.success": "Selected users have been deleted",
+  "genericComponent.empty.message": "No data to display, go back to the main page to add some"
 }

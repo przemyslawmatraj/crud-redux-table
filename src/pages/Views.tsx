@@ -1,5 +1,5 @@
 import { Typography, Space } from "antd";
-import UserTable from "../features/userTable/UserTable";
+import GenericComponent from "../Components/GenericComponent/GenericComponent";
 import { FormattedMessage } from "react-intl";
 
 const { Title } = Typography;
@@ -14,7 +14,7 @@ const Views = () => {
       >
         <FormattedMessage id="route.views" />
       </Title>
-      <UserTable />
+      <GenericComponent />
     </Space>
   );
 };

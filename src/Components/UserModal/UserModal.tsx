@@ -8,7 +8,7 @@ import { selectCurrentLanguage } from "../../features/internationalization/inter
 import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { Typography } from "antd";
+import { Typography, message } from "antd";
 import type { UserType } from "../../features/userTable/userTableSlice";
 import dayjs from "dayjs";
 import { v4 as uuidv4 } from "uuid";
@@ -52,6 +52,7 @@ const UserModal = ({
     mode: "all",
     defaultValues: defaultValues || undefined,
   });
+  const [messageApi, contextHolder] = message.useMessage();
 
   const { locale } = useAppSelector(selectCurrentLanguage);
 
@@ -68,12 +69,24 @@ const UserModal = ({
     if (userKey) {
       const newUser = { ...data, key: userKey };
       dispatch(editUser(newUser));
+      messageApi.success(
+        <FormattedMessage
+          id="message.editUser.success"
+          values={{ name: data.name }}
+        />
+      );
     }
   };
 
   const handleAdd = (data: FormValues) => {
     const newUser = { ...data, key: uuidv4() };
     dispatch(addUser(newUser));
+    messageApi.success(
+      <FormattedMessage
+        id="message.addUser.success"
+        values={{ name: data.name }}
+      />
+    );
   };
 
   const onSubmit = (data: FormValues) => {
@@ -90,6 +103,7 @@ const UserModal = ({
 
   return (
     <>
+      {contextHolder}
       <Button
         type="primary"
         {...(defaultValues && { type: "default", size: "small" })}

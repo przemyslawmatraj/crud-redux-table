@@ -1,4 +1,4 @@
-import { Key, memo, useRef, useState } from "react";
+import { Key, memo, useState } from "react";
 import {
   type UserType,
   selectAllUsers,
@@ -6,13 +6,15 @@ import {
   deleteSelectedUsers,
 } from "./userTableSlice";
 import { type ColumnsType } from "antd/es/table";
-import { Table, Space, Button } from "antd";
+import { Table, Space, Button, Typography, message } from "antd";
 import { EditOutlined, DeleteOutlined, PlusOutlined } from "@ant-design/icons";
 import { useAppSelector, useAppDispatch } from "../../app/hooks";
 import { FormattedMessage } from "react-intl";
 import styles from "./UserTable.module.scss";
 import UserModal from "../../Components/UserModal/UserModal";
-import { selectCurrentLanguage } from "../internationalization/internationalizationSlice";
+import DateOfBirth from "../internationalization/DateOfBirth";
+
+const { Paragraph } = Typography;
 
 const columns: ColumnsType<UserType> = [
   {
@@ -40,9 +42,19 @@ const columns: ColumnsType<UserType> = [
     title: <FormattedMessage id="table.bio" />,
     dataIndex: "bio",
     key: "bio",
-    width: 150,
+    width: 200,
     render: (text) => {
-      return <p className={styles.bio}>{text}</p>;
+      return (
+        <Paragraph
+          ellipsis={{
+            rows: 1,
+            expandable: true,
+            symbol: <FormattedMessage id="table.readMore" />,
+          }}
+        >
+          {text}
+        </Paragraph>
+      );
     },
   },
   {
@@ -69,12 +81,16 @@ const UserTable = () => {
     },
   });
   const [selectedRowKeys, setSelectedRowKeys] = useState<Key[]>([]);
+  const [messageApi, contextHolder] = message.useMessage();
 
   const dispatch = useAppDispatch();
-
   const data = useAppSelector(selectAllUsers);
 
   const handleDelete = () => {
+    messageApi.success(
+      <FormattedMessage id="message.deleteSelectedUsers.success" />
+    );
+    setSelectedRowKeys([]);
     dispatch(deleteSelectedUsers(selectedRowKeys));
   };
 
@@ -90,6 +106,7 @@ const UserTable = () => {
 
   return (
     <div>
+      {contextHolder}
       <Table
         columns={columns}
         dataSource={data}
@@ -139,37 +156,40 @@ const EditButton = memo(({ record }: { record: UserType }) => {
 
 const DeleteButton = memo(({ record }: { record: UserType }) => {
   const dispatch = useAppDispatch();
-  return (
-    <Space size="middle">
-      <Button
-        type="default"
-        size="small"
-        danger
-        onClick={() => {
-          dispatch(deleteUser(record.key));
-        }}
-        icon={<DeleteOutlined />}
-      >
-        <FormattedMessage id="button.delete" />
-      </Button>
-    </Space>
-  );
-});
+  const [messageApi, contextHolder] = message.useMessage();
 
-const DateOfBirth = ({ date }: { date: Date }) => {
-  const language = useAppSelector(selectCurrentLanguage);
-  const formattedLocale =
-    language.locale.slice(0, 2) + "-" + language.locale.slice(2);
+  const handleDelete = async () => {
+    await messageApi.success({
+      content: (
+        <FormattedMessage
+          id="message.deleteUser.success"
+          values={{
+            name: record.name,
+          }}
+        />
+      ),
+      key: record.key,
+      duration: 1,
+    });
+    dispatch(deleteUser(record.key));
+  };
 
   return (
     <>
-      {new Intl.DateTimeFormat(formattedLocale, {
-        year: "numeric",
-        month: "long",
-        day: "numeric",
-      }).format(date)}
+      {contextHolder}
+      <Space size="middle">
+        <Button
+          type="default"
+          size="small"
+          danger
+          onClick={handleDelete}
+          icon={<DeleteOutlined />}
+        >
+          <FormattedMessage id="button.delete" />
+        </Button>
+      </Space>
     </>
   );
-};
+});
 
 export default UserTable;

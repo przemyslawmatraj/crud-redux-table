@@ -16,8 +16,14 @@
   "table.dateOfBirth": "Data urodzenia",
   "table.bio": "Biografia",
   "table.actions": "Akcje",
+  "table.readMore": "Rozwiń",
   "form.required.errorMessage": "To pole jest wymagane",
   "form.number.errorMessage": "To pole musi zawierać liczbę",
   "form.date.errorMessage": "To pole musi zawierać datę",
-  "form.maxSize.errorMessage": "Maksymalna długość to {max} znaków"
+  "form.maxSize.errorMessage": "Maksymalna długość to {max} znaków",
+  "message.addUser.success": "Użytkownik {name} został dodany",
+  "message.editUser.success": "Użytkownik {name} został zaktualizowany",
+  "message.deleteUser.success": "Użytkownik {name} został usunięty",
+  "message.deleteSelectedUsers.success": "Zaznaczeni użytkownicy zostali usunięci",
+  "genericComponent.empty.message": "Brak danych do wyświetlenia, wróć na stronę główną i dodaj nowego użytkownika"
 }
