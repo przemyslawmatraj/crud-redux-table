@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Typography, Space } from "antd";
-import GenericComponent from "../common/GenericComponent/GenericComponent";
+import GenericComponent from "../Components/common/GenericComponent/GenericComponent";
 import { FormattedMessage } from "react-intl";
 import { useAppSelector } from "../app/hooks";
 import { selectAllUsers, UserType } from "../features/userTable/userTableSlice";

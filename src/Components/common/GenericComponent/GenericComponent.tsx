@@ -1,4 +1,3 @@
-import DateOfBirth from "../../features/internationalization/DateOfBirth";
 import { Avatar, Card, Space, Typography, Empty, Button } from "antd";
 import { FormattedMessage } from "react-intl";
 import { Link } from "react-router-dom";

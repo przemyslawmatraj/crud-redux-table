@@ -1,5 +1,5 @@
 import { Typography, Space } from "antd";
-import UserTable from "../features/userTable/UserTable";
+import UserTable from "../features/userTable/Table/UserTable";
 import { FormattedMessage } from "react-intl";
 
 const { Title } = Typography;

@@ -2,8 +2,11 @@
   "name": "euvic-antdesign-redux-table",
   "private": true,
   "version": "0.0.0",
+  "homepage": "https://przemyslawmatraj.github.io/",
   "type": "module",
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist",
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview"
@@ -30,6 +33,7 @@
     "@types/react-dom": "^17.0.19",
     "@types/uuid": "^9.0.1",
     "@vitejs/plugin-react": "^3.1.0",
+    "gh-pages": "^5.0.0",
     "typescript": "^4.9.3",
     "vite": "^4.2.0"
   }
