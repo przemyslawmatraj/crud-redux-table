@@ -12,7 +12,7 @@ git clone https://github.com/przemyslawmatraj/crud-redux-table.git
 
 ```
 
-cd product-campaigns
+cd crud-redux-table
 
 ```
 
